@@ -22,7 +22,7 @@ async function start() {
     await openInBox()
   })
 }
-async function openInBox () {
+async function openInBox() {
   imap.openBox('INBOX', false, async () => {
     inflag = true
     console.log('------------打开邮箱--------------')
@@ -42,7 +42,7 @@ async function search() {
     }
     try {
       // 判断邮箱是里的邮件是否为空
-      if(results && results.length === 0) {
+      if(!results || !results.length ) {
         return
       }
       getEmailContent(results[0])
@@ -123,8 +123,7 @@ async function markdownContent(content) {
   >${branch}
   >${commit}
   >${'Commit ' + commitMsg}
-  >${'Commit ' + commitAuthor}
-  >${by}`
+  >${'Commit ' + commitAuthor} @${by}`
 
   let config = {
     msgtype: "markdown",
@@ -137,7 +136,8 @@ async function markdownContent(content) {
 
 imap.once('error', async(err)=> {
   console.log(err)
-  warningRobot()
+  await warningRobot()
+  await start()
 });
 
 imap.once('end', async ()=> {
