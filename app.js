@@ -112,7 +112,7 @@ async function markdownContent(content) {
   let commitMsg = content.match(commitMsgReg)[0]
 
   //正则匹配内容 Commit Author
-  let commitAutReg = /(?=Author).*/g
+  let commitAutReg = /Author/g
   let commitAuthor = content.match(commitAutReg)[0]
   // /正则匹配内容 By
   let byReg = /(?=by).*?(?=\()/g
@@ -123,7 +123,7 @@ async function markdownContent(content) {
   >${branch}
   >${commit}
   >${'Commit ' + commitMsg}
-  >${'Commit ' + commitAuthor} @${by}`
+  >${'Commit ' + commitAuthor}: @${by}`
 
   let config = {
     msgtype: "markdown",
@@ -137,7 +137,6 @@ async function markdownContent(content) {
 imap.once('error', async(err)=> {
   console.log(err)
   await warningRobot()
-  await start()
 });
 
 imap.once('end', async ()=> {
