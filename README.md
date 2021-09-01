@@ -6,6 +6,6 @@
 
 3、在 gitlab 项目中 设置>集成>Pipelines emails>Recipients 中添加 2 中的邮箱账号
 
-4、找一台公网服务器（要访问 wx 服务）运行 index.js，建议使用 pm2
+4、找一台公网服务器（要访问 wx 服务）运行 app.js，建议使用 pm2
 
-5、执行完毕后删除 index.js 中的邮箱账号、密码（防止密码泄露） 
+5、执行完毕后删除 config.js 中的邮箱账号、密码（防止密码泄露） 
