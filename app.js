@@ -15,7 +15,7 @@ async function start() {
     console.log('------------已经成功连接服务器--------------')
     setTimeout(() => {
       if(!inflag) {
-        console.log(`无法连接收件箱，进行重新连接。`)
+        console.log('无法连接收件箱，进行重新连接。')
         imap.end()
       }
     }, delayTime)
@@ -70,7 +70,7 @@ async function getEmailContent(results) {
     console.log(`收取邮件报错:${err.message}`)
   });
   f.once('end', function () {
-    console.log(`收取邮件结束`)
+    console.log('收取邮件结束')
   });
 }
 start()
