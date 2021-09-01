@@ -45,7 +45,7 @@ async function search() {
       if(!results || !results.length ) {
         return
       }
-      getEmailContent(results[0])
+      getEmailContent(results)
     } catch(e) {
       console.log(e)
     }
@@ -99,11 +99,11 @@ async function markdownContent(content) {
   let projectReg = /(?=Project).*?(?=\()/g
   let project = content.match(projectReg)[0]
 
-  //正则匹配内容 分支
+  // 正则匹配内容 分支
   let branchReg = /(?=Branch).*?(?=\()/g
   let branch = content.match(branchReg)[0]
 
-  // //正则匹配内容 Commit
+  // 正则匹配内容 Commit
   let commitReg = /(?=Commit:).*?(?=\()/g
   let commit = content.match(commitReg)[0]
 
@@ -114,7 +114,7 @@ async function markdownContent(content) {
   //正则匹配内容 Commit Author
   let commitAutReg = /Author/g
   let commitAuthor = content.match(commitAutReg)[0]
-  // /正则匹配内容 By
+  // 正则匹配内容 By
   let byReg = /(?=by).*?(?=\()/g
   let by = content.match(byReg)[0]
   // 组成需要的格式
